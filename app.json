@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "edwise",
+    "slug": "edwise",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./App/assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./App/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "softwareKeyboardLayoutMode": "pan",
+      "adaptiveIcon": {
+        "foregroundImage": "./App/assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./App/assets/favicon.png"
+    }
+  }
+}
