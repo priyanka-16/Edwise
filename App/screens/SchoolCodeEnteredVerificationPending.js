@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Image, Text, TouchableWithoutFeedback } from 'react-native';
 import colors from '../config/colors';
+import BottomTabs from '../components/BottomTabs';
 import BottomTab from '../components/BottomTab';
 import Screen from '../components/Screen';
 
-
-function StudentNotJoinedAnySchool({navigation}) {
+function SchoolCodeEnteredVerificationPending({navigation, route}) {
     return (
         <Screen>
             <View style={styles.container}>
-                <Text style={styles.text}>Can’t find anything from {"\n"}your school?</Text>
-                <TouchableWithoutFeedback onPress={()=>navigation.navigate("Login5")}>
-                    <View style={styles.joinButton}>
-                        <Text style={styles.buttonText}>Join your school</Text>
-                    </View>
-                </TouchableWithoutFeedback>
+               <View>
+                <Text style={styles.text}>You have Entered School code as{"\n"}{route.params.schoolCode}</Text>
+                <Text style={styles.subText}>Awaiting approval from your school</Text>
+               </View>
+               <TouchableWithoutFeedback onPress={()=>navigation.navigate("Login5")}>
+
+                <View style={styles.joinButton}>
+                    <Text style={styles.buttonText}>Change school code</Text>
+                </View>
+               </TouchableWithoutFeedback>
                 
             </View>
             <BottomTab/>
         </Screen>
-       
     );
 }
 
@@ -29,7 +32,7 @@ const styles = StyleSheet.create({
         width:"85%",
         alignSelf:'center',
         height: 142,
-        backgroundColor:colors.primary,
+        backgroundColor:"#FF994F",
         borderRadius:10,
         padding:10,
         justifyContent:'space-around'
@@ -38,6 +41,12 @@ const styles = StyleSheet.create({
         fontSize:18,
         fontWeight:700,
         color: colors.white
+    },
+    subText:{
+        fontSize:14,
+        fontWeight:600,
+        color: colors.white,
+        top:0
     },
     joinButton:{
         width:175,
@@ -52,7 +61,6 @@ const styles = StyleSheet.create({
         fontSize:16,
         fontWeight: 500,
     }
-    
 })
 
-export default StudentNotJoinedAnySchool;
+export default SchoolCodeEnteredVerificationPending;

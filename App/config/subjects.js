@@ -1,0 +1,10 @@
+export default [{"code name":"maths", "display name":"Mathematics"},
+{"code name":"physics", "display name":"Physics"},
+{"code name":"chemistry", "display name":"Chemistry"},
+{"code name":"biology", "display name":"Biology"},
+{"code name":"sst", "display name":"Social Studies"},
+{"code name":"english", "display name":"English"},
+{"code name":"economics", "display name":"Economics"},
+{"code name":"mockTests", "display name":"Mock Tests"},
+{"code name":"previousYearPapers", "display name":"Previous Years Papers"},
+]

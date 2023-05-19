@@ -1,8 +1,9 @@
 import React from 'react';
-import {Text, StyleSheet, ImageBackground, Image, View } from 'react-native';
+import {Text, StyleSheet, ImageBackground, Image, View, TouchableWithoutFeedback } from 'react-native';
 import colors from '../config/colors';
 import * as Yup from 'yup';
 import {AppForm, AppFormField, SubmitButton} from '../components/forms';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
  
 const validationSchema = Yup.object().shape({
     // mobileNumber: Yup.string().matches(/^\d{10}$/, 'Please enter a valid mobile number').required().label("Mobile Number"),
@@ -22,7 +23,13 @@ function LoginScreen2({navigation, route}) {
               validationSchema={validationSchema}>
                 <AppFormField fieldTitle={"Enter Mobile Number"}  name={"mobileNumber"}
                 fieldContent={"+91"} keyboardType="numeric" textContentType="telephoneNumber" tops={300}
-                defaultValue={route.params.mob} editable={false} clr={true}/>
+                defaultValue={route.params.mob} editable={false} />
+
+                <TouchableWithoutFeedback onPress={()=>navigation.navigate("Onb5")}>
+                    <View style={{left:320, top:430, position:'absolute'}}>
+                        <MaterialCommunityIcons name="close-circle" size={30} color={colors.dark} />
+                    </View>
+                </TouchableWithoutFeedback>
                 
                 <AppFormField fieldTitle={"Enter OTP"}  name={"otp"} keyboardType="numeric" 
                 textContentType="oneTimeCode" secureTextEntry tops={320} errTops={500}/>

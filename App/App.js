@@ -1,14 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native';
+import SchoolCodeEnteredVerificationPending from './screens/SchoolCodeEnteredVerificationPending';
 import Onboarding from './navigation/Onboarding';
-import LoginScreen2 from './screens/LoginScreen2';
-import LoginScreen3 from './screens/LoginScreen3';
-import FirstScreen from './screens/StudentNotJoinedAnySchool';
-import LoginScreen from './screens/LoginScreen';
-import Login from './navigation/Login'
+import HomeWork from './screens/HomeWork';
+import BottomTabNavigator from './navigation/BottomTabNavigator';
+import TimeTable from './components/TimeTable';
+import Screen from './components/Screen';
+import HomeWork2 from './screens/HomeWork';
+import SelfStudyGoalNotSet from './screens/SelfStudyGoalNotSet';
+
+
 
 export default function App() {
   return (
-   <FirstScreen/>
+    <BottomTabNavigator/>
   );
 }
 

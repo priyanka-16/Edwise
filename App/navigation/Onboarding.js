@@ -5,7 +5,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from '../screens/LoginScreen';
 import LoginScreen2 from '../screens/LoginScreen2';
 import LoginScreen3 from '../screens/LoginScreen3';
-import FirstScreen from '../screens/StudentNotJoinedAnySchool';
+import StudentNotJoinedAnySchool from '../screens/StudentNotJoinedAnySchool';
+import EnterSchoolCodeScreen from '../screens/EnterSchoolCodeScreen';
+import SchoolCodeEnteredVerificationPending from '../screens/SchoolCodeEnteredVerificationPending';
+
 
 const Onb1 = () => {
   return(
@@ -52,9 +55,13 @@ const StackNavigator = ()=> (
         <Stack.Screen name='Onb5' component={LoginScreen}/>
         <Stack.Screen name="Login2" component={LoginScreen2} />
         <Stack.Screen name="Login3" component={LoginScreen3} />
-        <Stack.Screen name="Login4" component={FirstScreen}/>
+        <Stack.Screen name="Login4" component={StudentNotJoinedAnySchool}/>
+        <Stack.Screen name="Login5" component={EnterSchoolCodeScreen}/>
+        <Stack.Screen name="Login6" component={SchoolCodeEnteredVerificationPending}/>
+
     </Stack.Navigator>
 )
+
 
 function Onboarding(props) {
     return  (

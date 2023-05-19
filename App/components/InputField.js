@@ -11,7 +11,7 @@ function InputField({fieldTitle, fieldContent, tops,lefts,heights,...otherProps}
             <View style={styles.fieldContentContainer}>
                { fieldContent && <Text style={styles.fieldContent}>{fieldContent}</Text>}
                { fieldContent && <MaterialCommunityIcons name="menu-down" size={30} color={colors.black} />}
-                <TextInput style={[defaultStyles.text, {width:'70%', color:colors.black}]} {...otherProps}/>
+                <TextInput style={[defaultStyles.text, {width:'70%'}]} {...otherProps}/>
             </View>
         </View>
     );
