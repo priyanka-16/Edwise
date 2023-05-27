@@ -5,7 +5,7 @@ export default {
     biology:"dna",
     sst:"earth",
     english:"book-education",
-    economics:"",
-    mockTests:"",
-    previousYearPapers:""
+    economics:"finance",
+    mockTests:"file-document",
+    previousYearPapers:"file-clock"
 }

@@ -1,12 +1,13 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeWork from '../screens/HomeWork';
+import HomeWork from '../screens/HomeWorkUpcoming';
 import { NavigationContainer } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../config/colors';
 import { Image, Text } from 'react-native';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 import SelfStudyGoalNotSet from '../screens/SelfStudyGoalNotSet';
+import HomeWorkUpperTabNavigator from './HomeWorkUpperTabNavigator';
 
 
 const Tab = createBottomTabNavigator();
@@ -26,7 +27,7 @@ const TabNavigator = () => (
         paddingVertical: 5,
         paddingBottom:5,
       }  };}}>
-    <Tab.Screen name="Home" component={HomeWork} options={{
+    <Tab.Screen name="Home" component={HomeWorkUpperTabNavigator} options={{
       tabBarIcon: ()=><MaterialCommunityIcons name="home" size={24} color={colors.white}/>
     }} />
     <Tab.Screen name="Self Study" component={SelfStudyGoalNotSet} options={{

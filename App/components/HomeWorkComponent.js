@@ -4,7 +4,7 @@ import colors from '../config/colors';
 import icons from '../config/icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-function HomeWorkComponent({subject, topic, teacher, questions, time}) {
+function HomeWorkComponent({subject, topic, teacher, leftBottom, rightBottom}) {
     // const iconName = (subject=="maths"?'math-compass':subject=="physics"?'magnet-on':true)
     return  (
     <View style={[styles.container,{borderColor:colors[subject]}]}>
@@ -15,8 +15,8 @@ function HomeWorkComponent({subject, topic, teacher, questions, time}) {
             <Text style={{fontSize:18, fontWeight:800}}>{topic}</Text>
             <Text style={{fontSize:16, fontWeight:600}}>{teacher}</Text>
             <View style={{flexDirection:'row'}}>
-                <Text style={{marginRight:20, fontSize:14, fontWeight:400}}>{questions} Questions</Text>
-                <Text style={{fontSize:14, fontWeight:400}}>{time}</Text>
+                <Text style={{marginRight:20, fontSize:14, fontWeight:400}}>{leftBottom}</Text>
+                <Text style={{fontSize:14, fontWeight:400}}>{rightBottom}</Text>
             </View>
         </View>
     </View>

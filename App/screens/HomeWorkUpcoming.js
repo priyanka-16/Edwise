@@ -1,15 +1,9 @@
 import React from 'react';
-import Screen from '../components/Screen';
-import BottomTab from '../components/BottomTab';
-import { View, StyleSheet, TextInput, Text, Image, ScrollView, FlatList } from 'react-native';
-import colors from '../config/colors';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import defaultStyles from '../config/styles';
+import { View, StyleSheet, Text, Image, ScrollView, FlatList } from 'react-native';
 import HomeWorkComponent from '../components/HomeWorkComponent';
-import UpperTabs from '../components/UpperTabs';
 import TimeTable from '../components/TimeTable';
 
-function HomeWork(props) {
+function HomeWorkUpcoming(props) {
     const hws = [
         {
         "deadline":"Today",
@@ -45,24 +39,10 @@ function HomeWork(props) {
             <>
                 <Text style={styles.dayText}>{deadline}</Text>
                 <FlatList data={hw} keyExtractor={(h)=>h.subject} 
-                renderItem={({item})=><HomeWorkComponent questions={item.que} teacher={item.teacher} 
-                    subject={item.subject} time={item.time} topic={item.topic}/>}
+                renderItem={({item})=><HomeWorkComponent leftBottom={item.que+" Questions"} teacher={item.teacher} 
+                    subject={item.subject} rightBottom={item.time} topic={item.topic}/>}
                 />
             </>
-        )
-    }
-
-    const SearchAndDd = () => {
-        return(
-            <View style={styles.searchAndDd}>
-                    <View style={styles.search}>
-                        <TextInput placeholder='search' style={defaultStyles.text}/>
-                    </View>
-                    <View style={styles.dd}>
-                        <Text style={defaultStyles.text}>All</Text>
-                        <MaterialCommunityIcons name="menu-down" size={40} color="black" style={{top:0, left:50, position:'absolute'}} />
-                    </View>
-            </View>
         )
     }
 
@@ -77,47 +57,16 @@ function HomeWork(props) {
     }
 
     return (
-        <>
-        <Screen>
-            <ScrollView>
-                <SearchAndDd/>
-                <UpperTabs/>
-                <FlatList data={hws} keyExtractor={(hw)=>hw.deadline} style={styles.dayWiseHW} 
-                renderItem={({item})=><Renderhw deadline={item.deadline} hw={item.hw}/>}/>
-                <NoticeBoard/>
-                <TimeTable monDate={24} tts={tts}/>
-            </ScrollView>
-            
-        </Screen>
-        <Image style={{left:"0%"}} source={require('../assets/tabSelected.png')} resizeMode='stretch'/>
-        </>
+    <ScrollView>
+        <FlatList data={hws} keyExtractor={(hw)=>hw.deadline} style={styles.dayWiseHW} 
+        renderItem={({item})=><Renderhw deadline={item.deadline} hw={item.hw}/>}/>
+        <NoticeBoard/>
+        <TimeTable monDate={24} tts={tts}/>
+    </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
-    searchAndDd:{
-        flexDirection:'row',
-        justifyContent:'space-around',
-    },
-    search:{
-        height:40,
-        width:250,
-        borderColor:colors.dark,
-        borderWidth:2,
-        borderRadius:5,
-        justifyContent:'center',
-        padding:5
-    },
-    dd:{
-        height:40,
-        width:100,
-        borderColor:colors.dark,
-        borderWidth:2,
-        borderRadius:5,
-        padding:5,
-        flexDirection:'row',  
-        alignItems:'center'
-    },
     dayText:{
         fontWeight:600,
         fontSize:20,
@@ -135,4 +84,4 @@ const styles = StyleSheet.create({
     
 })
 
-export default HomeWork;
+export default HomeWorkUpcoming;

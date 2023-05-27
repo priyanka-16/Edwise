@@ -4,6 +4,7 @@ export default {
     white: "#ffffff",
     light: "#D9D9D9",
     dark: "#898989",
+    medium:"#C4C4C4",
     maths: "#FF5F5F",
     physics:"#F1A751",
     chemistry:"#72BBFF",
@@ -12,5 +13,10 @@ export default {
     english:"#7064FF",
     economics:"#A787FF",
     mockTests:"#FF63EF",
-    previousYearPapers:"#FF6CC0"
+    previousYearPapers:"#FF6CC0",
+    secondary:"#A289E5",
+    secondaryLight:"#DFD3FF",
+    red:"#E84343",
+    green:"#84FF90",
+    yellow:"#FFDB59"
   };

@@ -1,10 +1,11 @@
 import React from 'react';
 import Screen from '../components/Screen';
-import { Image, View, StyleSheet, Text, FlatList } from 'react-native';
+import { Image, View, StyleSheet, Text, FlatList, TextInput } from 'react-native';
 import colors from '../config/colors';
 import icons from '../config/icons';
 import subjects from '../config/subjects';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import defaultStyles from '../config/styles';
 
 function SelfStudyGoalNotSet(props) {
     const RenderSubject = ({codeName, displayName}) => {
@@ -20,15 +21,18 @@ function SelfStudyGoalNotSet(props) {
     return (
        <>
         <Screen>
-            <View style={styles.setGoalBox}>
+            {/* <View style={styles.setGoalBox}>
                 <Text style={styles.setGoalTitle}>Get your self study plan</Text>
                 <Text style={styles.setGoalSubtitle}>Set your goal by entering few details and get a customized plan made just for you!</Text>
                 <View style={styles.setGoalButton}>
                     <Text style={styles.setGoal}>Set Goal</Text>
                 </View>
-            </View>
+            </View> */}
             <View style={styles.selfStudy}>
-                <Text style={styles.selfStudyWOGoalTitle}>You can practice without setting your goal also</Text>
+                {/* <Text style={styles.selfStudyWOGoalTitle}>You can practice without setting your goal also</Text> */}
+                <View style={styles.search}>
+                        <TextInput placeholder='search' style={defaultStyles.text}/>
+                </View>
                 <FlatList data={subjects} keyExtractor={(subject)=>subject['code name']} numColumns={3}
                 contentContainerStyle={{justifyContent:'space-between'}}
                 renderItem={({item})=><RenderSubject codeName={item['code name']} displayName={item['display name']}/>}/>
@@ -103,6 +107,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
       },
+      search:{
+        height:40,
+        width:350,
+        borderColor:colors.dark,
+        borderWidth:2,
+        borderRadius:5,
+        justifyContent:'center',
+        padding:5
+    }
 })
 
 export default SelfStudyGoalNotSet;
