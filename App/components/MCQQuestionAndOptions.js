@@ -1,9 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {View, Text, StyleSheet, Image, TouchableWithoutFeedback } from 'react-native';
 import colors from '../config/colors';
 
-function MCQQuestionAndOptions({queText, queImg, optA, optB, optC, optD}) {
+function MCQQuestionAndOptions({questionsArray, responseArray, i, setResponse}) {
     const [selected, setSelected]=useState("")
+    useEffect(()=>{
+        // if que changes selected should change to that questions selected option
+        setSelected(questionsArray[i].selectedOpt)
+    },[i])
+    useEffect(()=>{
+        questionsArray[i].selectedOpt = selected
+    },[selected])
+    useEffect(() => {
+        // Update the selectedOpt property in the response array when the selected variable changes
+        const updatedResponse = responseArray.map((item, index) => {
+          if (index === i) {
+            return { ...item, selectedOpt:selected };
+          }
+          return item;
+        });
+        setResponse(updatedResponse);
+      }, [selected]);
+
     const Options = ({optionLabel, optionText}) => {
         return(
             <TouchableWithoutFeedback onPress={()=>selected==optionLabel ? setSelected("") : setSelected(optionLabel)}>
@@ -19,13 +37,13 @@ function MCQQuestionAndOptions({queText, queImg, optA, optB, optC, optD}) {
     return  (
         <>
             <View style={styles.questionContainer}>
-                <Text style={styles.queText}>{queText}</Text>
-                <Image source={queImg}/>
+                <Text style={styles.queText}>{questionsArray[i].queText}</Text>
+                <Image source={questionsArray[i].queImg}/>
             </View>
-            <Options optionLabel={"A"} optionText={optA}/>
-            <Options optionLabel={"B"} optionText={optB}/>
-            <Options optionLabel={"C"} optionText={optC}/>
-            <Options optionLabel={"D"} optionText={optD}/>
+            <Options optionLabel={"A"} optionText={questionsArray[i].optA}/>
+            <Options optionLabel={"B"} optionText={questionsArray[i].optB}/>
+            <Options optionLabel={"C"} optionText={questionsArray[i].optC}/>
+            <Options optionLabel={"D"} optionText={questionsArray[i].optD}/>
         </>
     );
 }

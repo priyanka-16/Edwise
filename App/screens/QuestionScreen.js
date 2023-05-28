@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {View, StyleSheet, Text, TouchableWithoutFeedback, Modal } from 'react-native';
 import Screen from '../components/Screen';
 import colors from '../config/colors';
@@ -6,45 +6,197 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import QuestionScreenHeading from '../components/QuestionScreenHeading';
 import MCQQuestionAndOptions from '../components/MCQQuestionAndOptions';
 import NumberPalette from '../components/NumberPalette';
+const ques = [{
+    "uniqueId":"",
+    "queText":"In the shown figure (not to scale), ABC is an isosceles triangle in which AB = AC. AEDC is a parallelogram. If CDF = 70º and BFE = 100º then find FBA.",
+    "queImg":require('../assets/queImg1.png'),
+    "optA":"30º",
+    "optB":"40º",
+    "optC":"50º",
+    "optD":"80º",
+    "answer":"B",
+    "selectedOpt":"",
+    "review":false,
+    "bookmark":false,
+    "notes":""
+}, {
+    "uniqueId":"",
+    "queText":"Ayush",
+    "queImg":require('../assets/queImg1.png'),
+    "optA":"30º",
+    "optB":"40º",
+    "optC":"50º",
+    "optD":"80º",
+    "answer":"B",
+    "selectedOpt":"",
+    "review":false,
+    "bookmark":false,
+    "notes":""
+}, {
+    "uniqueId":"",
+    "queText":"Mysha",
+    "queImg":require('../assets/queImg1.png'),
+    "optA":"30º",
+    "optB":"40º",
+    "optC":"50º",
+    "optD":"80º",
+    "answer":"B",
+    "selectedOpt":"",
+    "review":false,
+    "bookmark":false,
+    "notes":""
+}, {
+    "uniqueId":"",
+    "queText":"In the shown figure (not to scale), ABC is an isosceles triangle in which AB = AC. AEDC is a parallelogram. If CDF = 70º and BFE = 100º then find FBA.",
+    "queImg":require('../assets/queImg1.png'),
+    "optA":"30º",
+    "optB":"40º",
+    "optC":"50º",
+    "optD":"80º",
+    "answer":"B",
+    "selectedOpt":"",
+    "review":false,
+    "bookmark":false,
+    "notes":""
+}, {
+    "uniqueId":"",
+    "queText":"In the shown figure (not to scale), ABC is an isosceles triangle in which AB = AC. AEDC is a parallelogram. If CDF = 70º and BFE = 100º then find FBA.",
+    "queImg":require('../assets/queImg1.png'),
+    "optA":"30º",
+    "optB":"40º",
+    "optC":"50º",
+    "optD":"80º",
+    "answer":"B",
+    "selectedOpt":"",
+    "review":false,
+    "bookmark":false,
+    "notes":""
+}, {
+    "uniqueId":"",
+    "queText":"In the shown figure (not to scale), ABC is an isosceles triangle in which AB = AC. AEDC is a parallelogram. If CDF = 70º and BFE = 100º then find FBA.",
+    "queImg":require('../assets/queImg1.png'),
+    "optA":"30º",
+    "optB":"40º",
+    "optC":"50º",
+    "optD":"80º",
+    "answer":"B",
+    "selectedOpt":"",
+    "review":false,
+    "bookmark":false,
+    "notes":""
+}, {
+    "uniqueId":"",
+    "queText":"In the shown figure (not to scale), ABC is an isosceles triangle in which AB = AC. AEDC is a parallelogram. If CDF = 70º and BFE = 100º then find FBA.",
+    "queImg":require('../assets/queImg1.png'),
+    "optA":"30º",
+    "optB":"40º",
+    "optC":"50º",
+    "optD":"80º",
+    "answer":"B",
+    "selectedOpt":"",
+    "review":false,
+    "bookmark":false,
+    "notes":""
+}, {
+    "uniqueId":"",
+    "queText":"In the shown figure (not to scale), ABC is an isosceles triangle in which AB = AC. AEDC is a parallelogram. If CDF = 70º and BFE = 100º then find FBA.",
+    "queImg":require('../assets/queImg1.png'),
+    "optA":"30º",
+    "optB":"40º",
+    "optC":"50º",
+    "optD":"80º",
+    "answer":"B",
+    "selectedOpt":"",
+    "review":false,
+    "bookmark":false,
+    "notes":""
+}, {
+    "uniqueId":"",
+    "queText":"In the shown figure (not to scale), ABC is an isosceles triangle in which AB = AC. AEDC is a parallelogram. If CDF = 70º and BFE = 100º then find FBA.",
+    "queImg":require('../assets/queImg1.png'),
+    "optA":"30º",
+    "optB":"40º",
+    "optC":"50º",
+    "optD":"80º",
+    "answer":"B",
+    "selectedOpt":"",
+    "review":false,
+    "bookmark":false,
+    "notes":""
+}, {
+    "uniqueId":"",
+    "queText":"In the shown figure (not to scale), ABC is an isosceles triangle in which AB = AC. AEDC is a parallelogram. If CDF = 70º and BFE = 100º then find FBA.",
+    "queImg":require('../assets/queImg1.png'),
+    "optA":"30º",
+    "optB":"40º",
+    "optC":"50º",
+    "optD":"80º",
+    "answer":"B",
+    "selectedOpt":"",
+    "review":false,
+    "bookmark":false,
+    "notes":""
+}]
 
 function QuestionScreen(props) {
-    const ques = [{
-        "id":"1",
-        "queText":"In the shown figure (not to scale), ABC is an isosceles triangle in which AB = AC. AEDC is a parallelogram. If CDF = 70º and BFE = 100º then find FBA.",
-        "queImg":require('../assets/queImg1.png'),
-        "optA":"30º",
-        "optB":"40º",
-        "optC":"50º",
-        "optD":"80º",
-        "answer":"B",
-        "selectedOpt":"",
-        "review":false,
-        "bookmark":false,
-        "notes":""
-    }]
+    
     const numOfQue = ques.length
     const [showTools, setShowTools]=useState(false)
     const [showNumPalette,setShowNumPalette] = useState(false)
-    const AllTools = ({iconName, toolName, onPress})=>{
+    const [i, setI] = useState(0)
+    const [review, setReview] = useState(ques[i].review)
+    const [response, setResponse]=useState([])
+    
+    useEffect(()=>{
+        setReview(ques[i].review)
+    }, [i])
+    useEffect(()=>{   
+        ques[i].review=review
+    },[review])
+    useEffect(() => {
+        // Update the review property in the response array when the review variable changes
+        const updatedResponse = response.map((item, index) => {
+          if (index === i) {
+            return { ...item, review };
+          }
+          return item;
+        });
+        setResponse(updatedResponse);
+      }, [review]);
+    
+      useEffect(() => {
+        // Initialize the response array
+        const initialResponse = ques.map((item, index) => ({
+          queNo: index + 1,
+          review: item.review,
+          selectedOpt: item.selectedOpt,
+        }));
+        setResponse(initialResponse);
+      }, []);
+    const [bookmark, setBookmark] = useState(ques[i].bookmark)
+    ques[i].bookmark=bookmark
+
+    
+    const AllTools = ({iconName, toolName, onPress, pressed})=>{
         return(
             <TouchableWithoutFeedback onPress={onPress}>
                 <View style={{alignItems:'center'}}>
-                    <View style={styles.allTools}> 
-                        <MaterialCommunityIcons size={24} color={colors.primary} name={iconName}/>
+                    <View style={[styles.allTools,{backgroundColor:pressed ? colors.primary : colors.white}]}> 
+                        <MaterialCommunityIcons size={24} color={pressed ? colors.white : colors.primary} name={iconName}/>
                     </View>
                     <Text style={styles.allToolsText}>{toolName}</Text>
                 </View>
             </TouchableWithoutFeedback>
         )
-    }
+        }
     return  (
         <Screen>
-            <QuestionScreenHeading queNum={ques[0].id} numOfQue={numOfQue} openNumPalette={()=>setShowNumPalette(true)}/>
-            <MCQQuestionAndOptions queText={ques[0].queText} queImg={ques[0].queImg} optA={ques[0].optA} 
-            optB={ques[0].optB} optC={ques[0].optC} optD={ques[0].optD}/>
+            <QuestionScreenHeading queNum={i+1} numOfQue={numOfQue} openNumPalette={()=>setShowNumPalette(true)}/>
+            <MCQQuestionAndOptions i={i} responseArray={response} questionsArray={ques} setResponse={setResponse}/>
 
             <Modal visible={showNumPalette} transparent={true}>
-                <NumberPalette closeNumPalette={()=>setShowNumPalette(false)}/>
+                <NumberPalette questions={response} setI={setI}
+                setShowNumPalette={setShowNumPalette}/>
             </Modal>
 
             <View style={styles.bottomButtons}>
@@ -55,9 +207,9 @@ function QuestionScreen(props) {
                 </TouchableWithoutFeedback>
                 {showTools && (
                     <View style={{flexDirection:'row', flex:1, marginHorizontal:5}}>
-                        <AllTools iconName='file-find-outline' toolName='Review' />
+                        <AllTools iconName='file-find-outline' toolName='Review' pressed={review} onPress={()=>setReview(!review)} />
                         <AllTools iconName='file-document-edit-outline' toolName='Notes' />
-                        <AllTools iconName='bookmark-outline' toolName='Bookmark' />
+                        <AllTools iconName='bookmark-outline' toolName='Bookmark' pressed={bookmark} onPress={()=>setBookmark(!bookmark)} />
                         <AllTools iconName='floppy' toolName='Save' />
                     </View>
                 )}

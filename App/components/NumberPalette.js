@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
+import {View, StyleSheet, Text, TouchableWithoutFeedback, FlatList } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../config/colors';
 
-function NumberPalette({closeNumPalette}) {
+function NumberPalette({setShowNumPalette, questions, setI}) {
     const LegendEntry = ({legendColor, legendText}) => {
         return(
             <View style={styles.legendEntry}>
@@ -16,7 +16,7 @@ function NumberPalette({closeNumPalette}) {
         <View style={styles.numPaletteContainer}>
         <View style={styles.paletteTitle}>
             <Text style={styles.titleQuestions}>Questions</Text>
-            <TouchableWithoutFeedback onPress={closeNumPalette}>
+            <TouchableWithoutFeedback onPress={()=>setShowNumPalette(false)}>
                 <MaterialCommunityIcons size={24} name='close'/>
             </TouchableWithoutFeedback>
         </View>
@@ -25,9 +25,17 @@ function NumberPalette({closeNumPalette}) {
             <LegendEntry legendColor={colors.light} legendText={'Unattempted'}/>
             <LegendEntry legendColor={colors.yellow} legendText={'Review'}/>
         </View>
-        <View style={[styles.questionIcon, {backgroundColor:colors.green}]}>
-            <Text style={styles.queNo}>01</Text>
-        </View>
+    
+        <FlatList data={questions} keyExtractor={(question)=>question.queNo.toString()} numColumns={4}
+        renderItem={({item}) => (
+            <TouchableWithoutFeedback onPress={()=>{
+                setI(item.queNo-1); 
+                setShowNumPalette(false)}}>
+                <View style={[styles.questionIcon, {backgroundColor: item.review ? colors.yellow : item.selectedOpt == "" ? colors.light : colors.green}]}>
+                    <Text style={styles.queNo}>{item.queNo}</Text>
+                </View>
+            </TouchableWithoutFeedback>)
+        }/>
     </View>
     );
 }
@@ -54,9 +62,10 @@ const styles = StyleSheet.create({
         width:60,
         height:60,
         borderRadius:20,
-        left:20,
+        marginLeft:20,
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        marginTop:25
     },
     queNo:{
         fontSize:20,
@@ -65,7 +74,7 @@ const styles = StyleSheet.create({
     legend:{
         flexDirection:'row',
         paddingHorizontal:20,
-        paddingVertical: 15,
+        paddingTop: 15,
         justifyContent:'space-between'
     },
     legendEntry:{
