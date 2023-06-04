@@ -7,5 +7,8 @@ export default {
     english:"book-education",
     economics:"finance",
     mockTests:"file-document",
-    previousYearPapers:"file-clock"
+    previousYearPapers:"file-clock",
+    attempted:"format-list-checks",
+    accuracy:"thumb-up",
+    time_taken:"clock"
 }

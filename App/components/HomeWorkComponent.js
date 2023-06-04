@@ -1,25 +1,30 @@
 import React from 'react';
-import {View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import colors from '../config/colors';
 import icons from '../config/icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
-function HomeWorkComponent({subject, topic, teacher, leftBottom, rightBottom}) {
+function HomeWorkComponent({subject, topic, teacher, leftBottom, rightBottom, quesData}) {
+    const navigation=useNavigation();
+   
     // const iconName = (subject=="maths"?'math-compass':subject=="physics"?'magnet-on':true)
     return  (
-    <View style={[styles.container,{borderColor:colors[subject]}]}>
-        <View style={[styles.icon, {backgroundColor:colors[subject]}]}>
-            <MaterialCommunityIcons size={50} color={colors.white} name={icons[subject]} />
-        </View>
-        <View style={{marginLeft:10, marginTop:5}}>
-            <Text style={{fontSize:18, fontWeight:800}}>{topic}</Text>
-            <Text style={{fontSize:16, fontWeight:600}}>{teacher}</Text>
-            <View style={{flexDirection:'row'}}>
-                <Text style={{marginRight:20, fontSize:14, fontWeight:400}}>{leftBottom}</Text>
-                <Text style={{fontSize:14, fontWeight:400}}>{rightBottom}</Text>
+    <TouchableWithoutFeedback onPress={()=>navigation.navigate('QuestionScreen',{"quesData":quesData})}>
+        <View style={[styles.container,{borderColor:colors[subject]}]}>
+            <View style={[styles.icon, {backgroundColor:colors[subject]}]}>
+                <MaterialCommunityIcons size={50} color={colors.white} name={icons[subject]} />
+            </View>
+            <View style={{marginLeft:10, marginTop:5}}>
+                <Text style={{fontSize:18, fontWeight:800}}>{topic}</Text>
+                <Text style={{fontSize:16, fontWeight:600}}>{teacher}</Text>
+                <View style={{flexDirection:'row'}}>
+                    <Text style={{marginRight:20, fontSize:14, fontWeight:400}}>{leftBottom}</Text>
+                    <Text style={{fontSize:14, fontWeight:400}}>{rightBottom}</Text>
+                </View>
             </View>
         </View>
-    </View>
+    </TouchableWithoutFeedback>
     );
 }
 

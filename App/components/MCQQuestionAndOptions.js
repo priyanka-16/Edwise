@@ -1,15 +1,20 @@
+/* This component renders a single multiple-choice question with its options. It handles the 
+selection of options and updates the selected option in the state. It uses the Swipeable 
+component from react-native-gesture-handler to enable swiping between questions. */
+
 import React, { useState, useEffect } from 'react';
 import {View, Text, StyleSheet, Image, TouchableWithoutFeedback } from 'react-native';
 import colors from '../config/colors';
 
-function MCQQuestionAndOptions({questionsArray, responseArray, i, setResponse}) {
+
+function MCQQuestionAndOptions({question, responseArray, i, setResponse}) {
     const [selected, setSelected]=useState("")
     useEffect(()=>{
         // if que changes selected should change to that questions selected option
-        setSelected(questionsArray[i].selectedOpt)
+        setSelected(question.selectedOpt)
     },[i])
     useEffect(()=>{
-        questionsArray[i].selectedOpt = selected
+        question.selectedOpt = selected
     },[selected])
     useEffect(() => {
         // Update the selectedOpt property in the response array when the selected variable changes
@@ -34,17 +39,18 @@ function MCQQuestionAndOptions({questionsArray, responseArray, i, setResponse}) 
             </TouchableWithoutFeedback>
         )
     }
+    
     return  (
-        <>
+        <View style={styles.cardContainer}>
             <View style={styles.questionContainer}>
-                <Text style={styles.queText}>{questionsArray[i].queText}</Text>
-                <Image source={questionsArray[i].queImg}/>
+                <Text style={styles.queText}>{question.queText}</Text>
+                {/* <Image source={question.queImg}/> */}
             </View>
-            <Options optionLabel={"A"} optionText={questionsArray[i].optA}/>
-            <Options optionLabel={"B"} optionText={questionsArray[i].optB}/>
-            <Options optionLabel={"C"} optionText={questionsArray[i].optC}/>
-            <Options optionLabel={"D"} optionText={questionsArray[i].optD}/>
-        </>
+            <Options optionLabel={"A"} optionText={question.optA}/>
+            <Options optionLabel={"B"} optionText={question.optB}/>
+            <Options optionLabel={"C"} optionText={question.optC}/>
+            <Options optionLabel={"D"} optionText={question.optD}/>
+        </View>
     );
 }
 
@@ -111,6 +117,13 @@ const styles = StyleSheet.create({
         fontSize:18,
         fontWeight:400,
         marginBottom:5
+    },
+    cardContainer:{
+        borderColor:colors.light,
+        borderWidth:2,
+        backgroundColor:colors.white,
+        flex:0.8,
+        marginRight:20
     }
 });
 

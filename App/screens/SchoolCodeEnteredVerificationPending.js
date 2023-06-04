@@ -14,13 +14,16 @@ function SchoolCodeEnteredVerificationPending({navigation, route}) {
                 <Text style={styles.subText}>Awaiting approval from your school</Text>
                </View>
                <TouchableWithoutFeedback onPress={()=>navigation.navigate("Login5")}>
-
-                <View style={styles.joinButton}>
-                    <Text style={styles.buttonText}>Change school code</Text>
-                </View>
+                    <View style={styles.joinButton}>
+                        <Text style={styles.buttonText}>Change school code</Text>
+                    </View>
                </TouchableWithoutFeedback>
-                
             </View>
+            <TouchableWithoutFeedback onPress={()=>navigation.navigate('HomePage')}>
+                <View style={{width:150,height:50,alignSelf:'center', borderWidth:1, top:150, alignItems:'center', justifyContent:'center'}}>
+                    <Text>Proxy Button</Text>
+                </View>
+            </TouchableWithoutFeedback>
             <BottomTab/>
         </Screen>
     );

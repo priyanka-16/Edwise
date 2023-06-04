@@ -8,6 +8,10 @@ import LoginScreen3 from '../screens/LoginScreen3';
 import StudentNotJoinedAnySchool from '../screens/StudentNotJoinedAnySchool';
 import EnterSchoolCodeScreen from '../screens/EnterSchoolCodeScreen';
 import SchoolCodeEnteredVerificationPending from '../screens/SchoolCodeEnteredVerificationPending';
+import BottomTabNavigator from './BottomTabNavigator';
+import QuestionScreen from '../screens/QuestionScreen';
+import OnSubmit from '../screens/OnSubmit';
+
 
 
 const Onb1 = () => {
@@ -47,7 +51,7 @@ const Onb4 = () => {
 }
 const Stack = createNativeStackNavigator();
 const StackNavigator = ()=> (
-    <Stack.Navigator screenOptions={{headerShown: false, animation:'fade'}} >
+    <Stack.Navigator initialRouteName='HomePage' screenOptions={{headerShown: false, animation:'fade'}} >
         <Stack.Screen name="Onb1" component={Onb1} />
         <Stack.Screen name="Onb2" component={Onb2} />
         <Stack.Screen name="Onb3" component={Onb3} />
@@ -58,7 +62,9 @@ const StackNavigator = ()=> (
         <Stack.Screen name="Login4" component={StudentNotJoinedAnySchool}/>
         <Stack.Screen name="Login5" component={EnterSchoolCodeScreen}/>
         <Stack.Screen name="Login6" component={SchoolCodeEnteredVerificationPending}/>
-
+        <Stack.Screen name="HomePage" component={BottomTabNavigator}/>
+        <Stack.Screen name="QuestionScreen" component={QuestionScreen} />
+        <Stack.Screen name="OnSubmit" component={OnSubmit} />
     </Stack.Navigator>
 )
 

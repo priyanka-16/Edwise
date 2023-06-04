@@ -1,3 +1,6 @@
+/*This component represents a modal that displays a number palette for selecting a question number.
+It includes a legend to indicate the status of each question (attempted, unattempted, or review).*/
+
 import React from 'react';
 import {View, StyleSheet, Text, TouchableWithoutFeedback, FlatList } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';

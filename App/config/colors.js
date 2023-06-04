@@ -18,5 +18,7 @@ export default {
     secondaryLight:"#DFD3FF",
     red:"#E84343",
     green:"#84FF90",
-    yellow:"#FFDB59"
+    yellow:"#FFDB59",
+    darkGreen:"#03AF14",
+    darkRed:"#CB0D00"
   };

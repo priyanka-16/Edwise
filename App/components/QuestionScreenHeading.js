@@ -1,3 +1,10 @@
+/*It displays the current question number and the total number of questions. It also includes a 
+button to open the number palette for selecting a specific question. The component receives the following props:
+
+queNum: The current question number.
+numOfQue: The total number of questions.
+openNumPalette: A callback function to open the number palette modal. */
+
 import React, { useState } from 'react';
 import {View, StyleSheet, Text, TouchableWithoutFeedback, Modal } from 'react-native';
 import Screen from '../components/Screen';

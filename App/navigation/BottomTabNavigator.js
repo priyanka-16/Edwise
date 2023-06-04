@@ -42,11 +42,9 @@ const TabNavigator = () => (
   </Tab.Navigator>
 );
 
-function BottomTabNavigator() {
+function BottomTabNavigator({navigation}) {
   return  (
-    <NavigationContainer>
       <TabNavigator />
-    </NavigationContainer>
   );
 }
 

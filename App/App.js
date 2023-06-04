@@ -10,12 +10,14 @@ import SelfStudyGoalNotSet from './screens/SelfStudyGoalNotSet';
 import SelfStudySetGoal from './screens/SelfStudySetGoal';
 import HomeWorkUpperTabNavigator from './navigation/HomeWorkUpperTabNavigator';
 import QuestionScreen from './screens/QuestionScreen';
+import OnSubmit from './screens/OnSubmit';
+import EnterSchoolCodeScreen from './screens/EnterSchoolCodeScreen';
 
 
 
 export default function App() {
   return (
-    <QuestionScreen/>
+    <Onboarding/>
   );
 }
 
