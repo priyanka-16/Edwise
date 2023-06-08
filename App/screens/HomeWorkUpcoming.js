@@ -27,7 +27,8 @@ const quesData = [   // Define the questions array
       "selectedOpt": "",
       "review": false,
       "bookmark": false,
-      "notes": ""
+      "notes": "",
+      "queNo":1
     },
     {
       "uniqueId": "2",
@@ -41,7 +42,8 @@ const quesData = [   // Define the questions array
       "selectedOpt": "",
       "review": false,
       "bookmark": false,
-      "notes": ""
+      "notes": "",
+      "queNo":2
     },
     {
       "uniqueId": "3",
@@ -55,7 +57,8 @@ const quesData = [   // Define the questions array
       "selectedOpt": "",
       "review": false,
       "bookmark": false,
-      "notes": ""
+      "notes": "",
+      "queNo":3
     },
     {
       "uniqueId": "4",
@@ -69,7 +72,8 @@ const quesData = [   // Define the questions array
       "selectedOpt": "",
       "review": false,
       "bookmark": false,
-      "notes": ""
+      "notes": "",
+      "queNo":4
     },
     {
       "uniqueId": "5",
@@ -83,7 +87,8 @@ const quesData = [   // Define the questions array
       "selectedOpt": "",
       "review": false,
       "bookmark": false,
-      "notes": ""
+      "notes": "",
+      "queNo":5
     },
     {
       "uniqueId": "6",
@@ -97,7 +102,8 @@ const quesData = [   // Define the questions array
       "selectedOpt": "",
       "review": false,
       "bookmark": false,
-      "notes": ""
+      "notes": "",
+      "queNo":6
     },
     {
       "uniqueId": "7",
@@ -111,7 +117,8 @@ const quesData = [   // Define the questions array
       "selectedOpt": "",
       "review": false,
       "bookmark": false,
-      "notes": ""
+      "notes": "",
+      "queNo":7
     },
     {
       "uniqueId": "8",
@@ -125,7 +132,8 @@ const quesData = [   // Define the questions array
       "selectedOpt": "",
       "review": false,
       "bookmark": false,
-      "notes": ""
+      "notes": "",
+      "queNo":8
     },
     {
       "uniqueId": "9",
@@ -139,7 +147,8 @@ const quesData = [   // Define the questions array
       "selectedOpt": "",
       "review": false,
       "bookmark": false,
-      "notes": ""
+      "notes": "",
+      "queNo":9
     },
     {
       "uniqueId": "10",
@@ -153,7 +162,8 @@ const quesData = [   // Define the questions array
       "selectedOpt": "",
       "review": false,
       "bookmark": false,
-      "notes": ""
+      "notes": "",
+      "queNo":10
     }
   ]
 

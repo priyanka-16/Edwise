@@ -8,6 +8,7 @@ import { Image, Text } from 'react-native';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 import SelfStudyGoalNotSet from '../screens/SelfStudyGoalNotSet';
 import HomeWorkUpperTabNavigator from './HomeWorkUpperTabNavigator';
+import Profile from '../screens/Profile';
 
 
 const Tab = createBottomTabNavigator();
@@ -36,7 +37,7 @@ const TabNavigator = () => (
     <Tab.Screen name="Dashboard" component={HomeWork} options={{
       tabBarIcon: ()=><MaterialCommunityIcons name="view-dashboard" size={24} color={colors.white}/>
     }}/>
-    <Tab.Screen name="Profile" component={HomeWork} options={{
+    <Tab.Screen name="Profile" component={Profile} options={{
       tabBarIcon: ()=><MaterialCommunityIcons name="menu" size={24} color={colors.white}/>
     }}/>  
   </Tab.Navigator>

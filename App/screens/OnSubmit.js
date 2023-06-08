@@ -7,6 +7,18 @@ import icons from '../config/icons';
 
 function OnSubmit({navigation, route}) {
     const ques = route.params.quesData
+    const attemptedQuestions = ques.reduce((count, question) => {
+        if (question.selectedOpt !== "") {
+          return count + 1;
+        }
+        return count;
+      }, 0);
+    const correctQuestions = ques.reduce((count, question) => {
+        if (question.selectedOpt === question.answer) {
+          return count + 1;
+        }
+        return count;
+      }, 0);
     const TopSummaryBox = ({iconName, stats, statsType})=>{
         return(
             <View style={styles.topSummaryBox}>
@@ -35,8 +47,8 @@ function OnSubmit({navigation, route}) {
                 <Text style={styles.title}>   General Knowledge Quiz Report</Text>
             </View>
             <View style={styles.topSummaryContainer}>
-                <TopSummaryBox iconName={icons.attempted} stats={"20/25"} statsType={"Attempted"}/>
-                <TopSummaryBox iconName={icons.accuracy} stats={"16/20"} statsType={"Accuracy"}/>
+                <TopSummaryBox iconName={icons.attempted} stats={(attemptedQuestions/ques.length*100)+"%"} statsType={"Attempted"}/>
+                <TopSummaryBox iconName={icons.accuracy} stats={(attemptedQuestions!=0) ? (correctQuestions/attemptedQuestions)*100+"%" : "NA"} statsType={"Accuracy"}/>
                 <TopSummaryBox iconName={icons.time_taken} stats={"54 mins"} statsType={"Time taken"}/>
             </View>
             <View style={styles.legend}>

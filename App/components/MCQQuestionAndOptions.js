@@ -7,7 +7,7 @@ import {View, Text, StyleSheet, Image, TouchableWithoutFeedback } from 'react-na
 import colors from '../config/colors';
 
 
-function MCQQuestionAndOptions({question, responseArray, i, setResponse}) {
+function MCQQuestionAndOptions({question, i}) {
     const [selected, setSelected]=useState("")
     useEffect(()=>{
         // if que changes selected should change to that questions selected option
@@ -16,16 +16,6 @@ function MCQQuestionAndOptions({question, responseArray, i, setResponse}) {
     useEffect(()=>{
         question.selectedOpt = selected
     },[selected])
-    useEffect(() => {
-        // Update the selectedOpt property in the response array when the selected variable changes
-        const updatedResponse = responseArray.map((item, index) => {
-          if (index === i) {
-            return { ...item, selectedOpt:selected };
-          }
-          return item;
-        });
-        setResponse(updatedResponse);
-      }, [selected]);
 
     const Options = ({optionLabel, optionText}) => {
         return(

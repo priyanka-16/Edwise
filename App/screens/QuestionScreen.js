@@ -26,10 +26,10 @@ function QuestionScreen( {route}) {
     const numOfQue = ques.length  // Extract the total number of questions
 
     // State variables
+  
     const [showNumPalette,setShowNumPalette] = useState(false)
     const [i, setI] = useState(0)
     const [review, setReview] = useState(ques[i].review)
-    const [response, setResponse]=useState([])
     const [bookmark, setBookmark] = useState(ques[i].bookmark)
     const [notes, setNotes] = useState("")
     
@@ -48,39 +48,21 @@ function QuestionScreen( {route}) {
   },[notes])
 
     useEffect(() => {
-        // Update the review property in the response array when the review variable changes
-        const updatedResponse = response.map((item, index) => {
-          if (index === i) {
-            return { ...item, review };
-          }
-          return item;
-        });
-        setResponse(updatedResponse);
         ques[i].review=review // when the review variable changes, the corresponding value is updated in the ques array.
       }, [review]);
     
-      useEffect(() => {
-        // Initialize the response array
-        const initialResponse = ques.map((item, index) => ({
-          queNo: index + 1,
-          review: item.review,
-          selectedOpt: item.selectedOpt,
-        }));
-        setResponse(initialResponse);
-      }, []);
 
     return  (
         <Screen>
             <QuestionScreenHeading queNum={i+1} numOfQue={numOfQue} openNumPalette={()=>setShowNumPalette(true)}/>
 
             <Swiper cards={ques} cardIndex={i} onSwipedLeft={()=> setI(i+1)} onSwipedRight={()=> setI(i-1)}  
-            renderCard={(card)=><MCQQuestionAndOptions i={i} responseArray={response} question={card} 
-            setResponse={setResponse}/>} showSecondCard={false} containerStyle={styles.MCQContainer} 
-            disableRightSwipe={i==0} disableLeftSwipe={i==numOfQue-1} cardVerticalMargin={0} 
-            cardHorizontalMargin={10} key={i}/>
+            renderCard={(card)=><MCQQuestionAndOptions i={i} question={card}/>} 
+            showSecondCard={false} containerStyle={styles.MCQContainer} disableRightSwipe={i==0}
+            disableLeftSwipe={i==numOfQue-1} cardVerticalMargin={0} cardHorizontalMargin={10} key={i}/>
 
             <Modal visible={showNumPalette} transparent={true}>
-                <NumberPalette questions={response} setI={setI} setShowNumPalette={setShowNumPalette}/>
+                <NumberPalette questions={ques} setI={setI} setShowNumPalette={setShowNumPalette}/>
             </Modal>
 
             <BottomToolsQuestionScreen review={review} bookmark={bookmark} notes={notes} 
